@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieFlex | Film Keşfet</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+         <div class="logo" id="logo" style="cursor: pointer;">Movie<span>Flex</span></div>
+        <form id="form">
+            <input type="text" id="search" class="search" placeholder="Film ara...">
+        </form>
+        <nav>
+            <button id="watchlist-btn">İzleme Listem</button>
+        </nav>
+       
+    </header>
+
+    <main id="main"></main>
+    <section id="watchlist-section" class="hidden">
+    <div class="watchlist-header">
+        <h2>İzleme Listem</h2>
+        <button id="back-btn">⬅ Ana Sayfaya Dön</button>
+    </div>
+    <div id="watchlist-container" class="product-list"></div>
+</section>
+
+<div id="toast-container"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

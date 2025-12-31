@@ -1,0 +1,242 @@
+:root {
+    --primary-color: #753032;
+    --secondary-color: #420f1b;
+    --accent-color: #ff891b;
+    --text-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.search {
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    width: 300px;
+    transition: 0.3s;
+}
+
+.search:focus {
+    outline: none;
+    background-color: var(--primary-color);
+    width: 350px;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 2rem;
+}
+
+.movie {
+    background-color: var(--secondary-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.movie:hover {
+    transform: scale(1.02);
+}
+
+.movie img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-info h3 {
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.movie-info span {
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.overview {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    color: #333;
+    padding: 1.5rem;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+}
+
+.movie:hover .overview {
+    transform: translateY(0);
+}
+
+.movie-info span.green { color: #2ecc71; }
+.movie-info span.orange { color: #f39c12; }
+.movie-info span.red { color: #e74c3c; }
+
+#watchlist-btn {
+    background-color: var(--accent-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#watchlist-btn:hover {
+    background-color: #f39c12;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.watchlist-header {
+    padding: 2rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#back-btn {
+    background: var(--accent-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#watchlist-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; 
+        gap: 15px;
+        padding: 1.5rem 1rem;
+    }
+
+    .search {
+        width: 100%; 
+        max-width: none;
+    }
+
+    .search:focus {
+        width: 100%;
+    }
+
+    main, #watchlist-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+        gap: 12px;
+        padding: 1rem;
+    }
+
+    .movie img {
+        height: 240px; 
+    } 
+
+    .movie-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .overview {
+        padding: 1rem;
+        font-size: 0.85rem;
+        overflow-y: auto; 
+    }
+}
+
+@media (max-width: 480px) {
+    main, #watchlist-container {
+        grid-template-columns: 1fr 1fr; 
+    }
+}
+
+
+
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3000;
+}
+
+.toast {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slideIn 0.4s ease-out, fadeOut 0.4s 2.5s forwards;
+}
+
+.toast.error {
+    background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
